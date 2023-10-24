@@ -50,6 +50,11 @@ let
       libqb
     ];
 
+    patchPhase = ''
+      substituteInPlace heartbeat/ocf-binaries.in \
+        --replace "PATH=" "set -xv; PATH="
+    '';
+
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
       # Needed with GCC 12 but breaks on darwin (with clang) or older gcc
       "-Wno-error=maybe-uninitialized"
