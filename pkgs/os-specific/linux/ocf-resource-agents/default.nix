@@ -13,6 +13,7 @@
 , pacemaker
 , gawk
 , nettools
+, libpq
 }:
 
 let
@@ -38,6 +39,7 @@ let
       autoreconfHook
       pkg-config
       gawk
+      libpq
     ];
 
     buildInputs = [
@@ -45,6 +47,7 @@ let
       python3
       gawk
       nettools
+      libpq
     ];
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
