@@ -56,6 +56,9 @@ let
 
     # Windows
     "aarch64-windows" "x86_64-windows" "i686-windows"
+
+    # UEFI
+    "x86_64-w64-mingw32abiuefi" "aarch64-w64-mingw32abiuefi"
   ];
 
   allParsed = map parse.mkSystemFromString all;

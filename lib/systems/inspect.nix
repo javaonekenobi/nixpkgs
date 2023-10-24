@@ -98,6 +98,8 @@ rec {
       { cpu = { family = "riscv"; }; }
       { cpu = { family = "x86"; }; }
     ];
+
+    isEfi = { kernel = kernels.uefi; };
   };
 
   matchAnyAttrs = patterns:

@@ -299,12 +299,15 @@ rec {
     ghcjs    = { execFormat = unknown; families = { }; };
     genode   = { execFormat = elf;     families = { }; };
     mmixware = { execFormat = unknown; families = { }; };
+    # UEFI
+    mingw32abiuefi = { execFormat = pe; families = { }; };
   } // { # aliases
     # 'darwin' is the kernel for all of them. We choose macOS by default.
     darwin = kernels.macos;
     watchos = kernels.ios;
     tvos = kernels.ios;
     win32 = kernels.windows;
+    uefi = kernels.mingw32abiuefi;
   };
 
   ################################################################################
@@ -427,7 +430,7 @@ rec {
       }
       # cpu-vendor-os
       else if elemAt l 1 == "apple" ||
-              elem (elemAt l 2) [ "wasi" "redox" "mmixware" "ghcjs" "mingw32" ] ||
+              elem (elemAt l 2) [ "wasi" "redox" "mmixware" "ghcjs" "mingw32" "mingw32abiuefi" ] ||
               hasPrefix "freebsd" (elemAt l 2) ||
               hasPrefix "netbsd" (elemAt l 2) ||
               hasPrefix "genode" (elemAt l 2)

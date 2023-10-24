@@ -302,6 +302,14 @@ rec {
   #
 
   # FIXME: this system double data may be disputed.
+  x86_64-w64-mingw32abiuefi = {
+    config = "x86_64-w64-mingw32abiuefi";
+    rustc.config = "x86_64-unknown-uefi";
+    linker = "lld";
+    useLLVM = true;
+    libc = null;
+  };
+
   x86_64-pc-windows-msvc = {
     config = "x86_64-pc-windows-msvc";
     rustc.config = "x86_64-unknown-uefi";

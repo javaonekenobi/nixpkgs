@@ -564,7 +564,7 @@ stdenv.mkDerivation {
     ''
 
     # TODO: categorize these and figure out a better place for them
-    + optionalString targetPlatform.isWindows ''
+    + optionalString (targetPlatform.isWindows || targetPlatform.isEfi) ''
       hardening_unsupported_flags+=" pic"
     '' + optionalString targetPlatform.isMinGW ''
       hardening_unsupported_flags+=" stackprotector fortify"
