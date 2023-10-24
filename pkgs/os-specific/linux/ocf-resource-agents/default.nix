@@ -23,23 +23,26 @@ let
 
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
-    version = "4.10.0";
+    version = "4.13.0";
 
     src = fetchFromGitHub {
       owner = "ClusterLabs";
       repo = pname;
       rev = "v${version}";
-      sha256 = "0haryi3yrszdfpqnkfnppxj1yiy6ipah6m80snvayc7v0ss0wnir";
+      sha256 = "sVOuC5bP9Y0tZIod0h+4/URuqCy2oG/B2EAxaRBvzo8=";
     };
 
     nativeBuildInputs = [
       autoreconfHook
       pkg-config
+      gawk
     ];
 
     buildInputs = [
       glib
       python3
+      gawk
+      nettools
     ];
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
