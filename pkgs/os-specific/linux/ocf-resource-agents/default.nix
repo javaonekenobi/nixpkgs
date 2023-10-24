@@ -11,6 +11,8 @@
 , glib
 , drbd
 , pacemaker
+, gawk
+, nettools
 }:
 
 let
