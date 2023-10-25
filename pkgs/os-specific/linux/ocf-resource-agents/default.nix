@@ -53,6 +53,10 @@ let
     patchPhase = ''
       substituteInPlace heartbeat/ocf-binaries.in \
         --replace "PATH=" "set -xv; PATH="
+      substituteInPlace heartbeat/ocf-binaries.in \
+        --replace "check_binary () {" "check_binary () { \necho \"looking for $1\n\";"
+      substituteInPlace heartbeat/ocf-binaries.in \
+        --replace "test -x" "echo bin $bin; which $bin;\ntest -x"
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
