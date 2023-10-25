@@ -14,6 +14,7 @@
 , gawk
 , nettools
 , libqb
+, which
 }:
 
 let
@@ -40,7 +41,7 @@ let
       pkg-config
       gawk
       libqb
-      which.out
+      which
     ];
 
     buildInputs = [
@@ -49,7 +50,7 @@ let
       gawk
       nettools
       libqb
-      which.out
+      which
     ];
 
     patchPhase = ''
