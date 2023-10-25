@@ -60,6 +60,8 @@ let
       substituteInPlace heartbeat/ocf-binaries.in \
         --replace "PATH=" "set -xv; PATH="
       substituteInPlace heartbeat/ocf-binaries.in \
+        --replace "/bin/ping" "ping"
+      substituteInPlace heartbeat/ocf-binaries.in \
         --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; test -x"
     '';
 
