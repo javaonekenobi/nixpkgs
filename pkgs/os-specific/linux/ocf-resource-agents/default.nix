@@ -43,7 +43,7 @@ let
       gawk
       libqb
       which
-      unixtools
+      unixtools.ping
     ];
 
     buildInputs = [
@@ -53,7 +53,7 @@ let
       nettools
       libqb
       which
-      unixtools
+      unixtools.ping
     ];
 
     patchPhase = ''
