@@ -15,6 +15,7 @@
 , nettools
 , libqb
 , which
+, unixtools
 }:
 
 let
@@ -42,6 +43,7 @@ let
       gawk
       libqb
       which
+      unixtools
     ];
 
     buildInputs = [
@@ -51,6 +53,7 @@ let
       nettools
       libqb
       which
+      unixtools
     ];
 
     patchPhase = ''
