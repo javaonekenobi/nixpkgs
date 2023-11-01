@@ -45,6 +45,7 @@ let
       libqb
       which
       unixtools.ping
+      openiscsi
     ];
 
     buildInputs = [
