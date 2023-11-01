@@ -7,7 +7,7 @@
 , fetchFromGitHub
 , autoreconfHook
 , pkg-config
-, python3
+, python311
 , glib
 , drbd
 , pacemaker
