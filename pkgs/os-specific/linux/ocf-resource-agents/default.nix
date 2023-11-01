@@ -42,6 +42,7 @@ let
     nativeBuildInputs = [
       autoreconfHook
       pkg-config
+      python311
       gawk
       libqb
       which
@@ -52,7 +53,7 @@ let
 
     buildInputs = [
       glib
-      python3
+      python311
       gawk
       nettools
       libqb
@@ -66,7 +67,7 @@ let
       substituteInPlace heartbeat/ocf-binaries.in \
         --replace "/bin/ping" "ping"
       substituteInPlace heartbeat/ocf-binaries.in \
-        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; test -x"
+        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin; which iscsiadm >> /var/log/pacemaker/pacemaker.log 2>&1; test -x"
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
