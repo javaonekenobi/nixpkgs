@@ -46,6 +46,7 @@ let
       which
       unixtools.ping
       openiscsi
+      python311Packages.logging-journald
     ];
 
     buildInputs = [
@@ -57,6 +58,7 @@ let
       which
       unixtools.ping
       openiscsi
+      python311Packages.logging-journald
     ];
 
     patchPhase = ''
