@@ -17,7 +17,7 @@
 , which
 , unixtools
 , openiscsi
-, python311Packages.logging-journald
+, python311Packages
 }:
 
 let
