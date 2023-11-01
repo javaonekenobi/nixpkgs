@@ -67,7 +67,7 @@ let
       substituteInPlace heartbeat/ocf-binaries.in \
         --replace "/bin/ping" "ping"
       substituteInPlace heartbeat/ocf-binaries.in \
-        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo "irio iscsiadm" >> /var/log/pacemaker/pacemaker.log; which iscsiadm >> /var/log/pacemaker/pacemaker.log 2>&1; test -x"
+        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo "irio iscsiadm: \$(which iscsiadm)" >> /var/log/pacemaker/pacemaker.log; test -x"
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
