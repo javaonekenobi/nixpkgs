@@ -16,6 +16,7 @@
 , libqb
 , which
 , unixtools
+, openiscsi
 }:
 
 let
@@ -54,11 +55,10 @@ let
       libqb
       which
       unixtools.ping
+      openiscsi
     ];
 
     patchPhase = ''
-      substituteInPlace heartbeat/ocf-binaries.in \
-        --replace "PATH=" "set -xv; PATH="
       substituteInPlace heartbeat/ocf-binaries.in \
         --replace "/bin/ping" "ping"
       substituteInPlace heartbeat/ocf-binaries.in \
