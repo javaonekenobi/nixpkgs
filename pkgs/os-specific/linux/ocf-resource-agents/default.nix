@@ -20,6 +20,7 @@
 , python311Packages
 , kmod
 , psmisc
+, util-linux
 }:
 
 let
@@ -53,6 +54,7 @@ let
       python311Packages.logging-journald
       kmod
       psmisc
+      util-linux
     ];
 
     buildInputs = [
@@ -67,6 +69,7 @@ let
       python311Packages.logging-journald
       kmod
       psmisc
+      util-linux
     ];
 
     patchPhase = ''
