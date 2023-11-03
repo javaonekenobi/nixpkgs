@@ -18,6 +18,7 @@
 , unixtools
 , openiscsi
 , python311Packages
+, kmod
 }:
 
 let
@@ -49,6 +50,7 @@ let
       unixtools.ping
       openiscsi
       python311Packages.logging-journald
+      kmod
     ];
 
     buildInputs = [
@@ -61,6 +63,7 @@ let
       unixtools.ping
       openiscsi
       python311Packages.logging-journald
+      kmod
     ];
 
     patchPhase = ''
