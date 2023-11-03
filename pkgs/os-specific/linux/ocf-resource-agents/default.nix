@@ -19,7 +19,7 @@
 , openiscsi
 , python311Packages
 , kmod
-, fuser
+, psmisc
 }:
 
 let
@@ -52,7 +52,7 @@ let
       openiscsi
       python311Packages.logging-journald
       kmod
-      fuser
+      psmisc
     ];
 
     buildInputs = [
@@ -66,7 +66,7 @@ let
       openiscsi
       python311Packages.logging-journald
       kmod
-      fuser
+      psmisc
     ];
 
     patchPhase = ''
