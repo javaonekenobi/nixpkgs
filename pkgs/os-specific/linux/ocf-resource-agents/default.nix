@@ -21,6 +21,7 @@
 , kmod
 , psmisc
 , util-linux
+, lvm2
 }:
 
 let
@@ -55,6 +56,7 @@ let
       kmod
       psmisc
       util-linux
+      lvm2
     ];
 
     buildInputs = [
@@ -70,6 +72,7 @@ let
       kmod
       psmisc
       util-linux
+      lvm2
     ];
 
     patchPhase = ''
