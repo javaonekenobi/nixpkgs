@@ -74,8 +74,8 @@ let
 
     patchPhase = ''
       substituteInPlace heartbeat/ocf-binaries.in \
-        --replace "/bin/ping" "ping" \
-        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo \"irio path: \$PATH\" >> /var/log/pacemaker/pacemaker.log; test -x" \
+        --replace "/bin/ping" "ping"
+#        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo \"irio path: \$PATH\" >> /var/log/pacemaker/pacemaker.log; test -x" \
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
