@@ -74,7 +74,7 @@ let
 
     patchPhase = ''
       substituteInPlace heartbeat/ocf-binaries.in \
-        --replace "PATH=.*" "PATH=/run/current-system/sw/bin" \
+        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
         --replace "/bin/ping" "ping"
 #        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo \"irio path: \$PATH\" >> /var/log/pacemaker/pacemaker.log; test -x" \
     '';
