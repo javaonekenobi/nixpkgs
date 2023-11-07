@@ -94,7 +94,7 @@ let
     ]);
 
     postInstallPhases = ''
-      sed -i heartbeat/ocf-binaries.in -e 's/\/bin\/ping/ping'
+      sed -i heartbeat/clvm -e 's/deactivate volume groups/& $(which vgchange)/'
     '';
 
     meta = with lib; {
