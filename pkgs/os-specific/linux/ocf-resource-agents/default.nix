@@ -79,7 +79,7 @@ let
     ];
 
     patchPhase = ''
-      sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="/run/current-system/sw/bin"'
+      sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"'
 #      substituteInPlace heartbeat/ocf-binaries.in \
 #        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
 #        --replace "/bin/ping" "ping"
@@ -94,7 +94,7 @@ let
     ]);
 
     postInstallPhases = ''
-      sed -i heartbeat/ocf-binaries.in -e '\/bin\/ping/ping'
+      sed -i heartbeat/ocf-binaries.in -e 's/\/bin\/ping/ping'
     '';
 
     meta = with lib; {
