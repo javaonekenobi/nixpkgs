@@ -22,6 +22,7 @@
 , psmisc
 , util-linux
 , lvm2
+, gnused
 }:
 
 let
@@ -57,6 +58,7 @@ let
       psmisc
       util-linux
       lvm2
+      gnused
     ];
 
     buildInputs = [
@@ -73,21 +75,27 @@ let
       psmisc
       util-linux
       lvm2
+      gnused
     ];
 
     patchPhase = ''
-      substituteInPlace heartbeat/ocf-binaries.in \
-        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
-        --replace "/bin/ping" "ping"
-#        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo \"irio path: \$PATH\" >> /var/log/pacemaker/pacemaker.log; test -x" \
-      substituteInPlace heartbeat/LVM \
-        --replace "vgchange" "/run/current-system/sw/bin/vgchange"
+      sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="/run/current-system/sw/bin"'
+#      substituteInPlace heartbeat/ocf-binaries.in \
+#        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
+#        --replace "/bin/ping" "ping"
+##        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo \"irio path: \$PATH\" >> /var/log/pacemaker/pacemaker.log; test -x" \
+#      substituteInPlace heartbeat/LVM \
+#        --replace "vgchange" "/run/current-system/sw/bin/vgchange"
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
       # Needed with GCC 12 but breaks on darwin (with clang) or older gcc
       "-Wno-error=maybe-uninitialized"
     ]);
+
+    postInstallPhases = ''
+      sed -i heartbeat/ocf-binaries.in -e '\/bin\/ping/ping'
+    '';
 
     meta = with lib; {
       homepage = "https://github.com/ClusterLabs/resource-agents";
