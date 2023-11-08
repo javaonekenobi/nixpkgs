@@ -72,6 +72,9 @@ stdenv.mkDerivation rec {
     "--enable-vdo"
   ] ++ lib.optionals stdenv.hostPlatform.isStatic [
     "--enable-static_link"
+  ] ++ lib.optionals enableCluster [
+    "--enable-use-lvmlockd"
+    "--enable-ocf"
   ];
 
   preConfigure = ''
