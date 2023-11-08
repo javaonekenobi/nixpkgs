@@ -9,7 +9,7 @@
 , substituteAll
 , enableCmdlib ? false
 , enableDmeventd ? false
-, enableCluster ? false
+#, enableCluster ? false
 , udevSupport ? !stdenv.hostPlatform.isStatic, udev
 , onlyLib ? stdenv.hostPlatform.isStatic
   # Otherwise we have a infinity recursion during static compilation
@@ -73,7 +73,7 @@ stdenv.mkDerivation rec {
     "--enable-vdo"
   ] ++ lib.optionals stdenv.hostPlatform.isStatic [
     "--enable-static_link"
-  ] ++ lib.optionals enableCluster [
+  ] ++ [
     "--enable-use-lvmlockd"
     "--enable-ocf"
   ];
