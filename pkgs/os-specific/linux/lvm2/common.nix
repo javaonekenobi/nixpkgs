@@ -75,6 +75,8 @@ stdenv.mkDerivation rec {
     "--enable-static_link"
   ] ++ [
     "--enable-use-lvmlockd"
+    "--enable-lvmlockd-dlm"
+    "--enable-lvmlockd-dlmcontrol"
     "--enable-ocf"
   ];
 
