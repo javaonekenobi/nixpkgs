@@ -81,6 +81,10 @@ let
     patchPhase = ''
       sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
       sed -i heartbeat/ocf-binaries.in -e 's/:=\([a-z]\)/:=\/run\/current-system\/sw\/bin\/\1/'
+      sed -i heartbeat/ocf-binaries.in -e 's/test -x/echo "IRIO looking for $bin: $(which $bin)" >> /var/log/pacemaker/pacemaker.log; &/'
+      sed -i heartbeat/iscsi -e 's/^# Initialization:/set -v/'
+      sed -i heartbeat/LVM-activate -e 's/^# Initialization:/set -v/'
+      sed -i heartbeat/LVM -e 's/^# Initialization:/set -v/'
 #      substituteInPlace heartbeat/ocf-binaries.in \
 #        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
 #        --replace "/bin/ping" "ping"
