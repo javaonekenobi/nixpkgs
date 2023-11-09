@@ -81,6 +81,7 @@ let
     patchPhase = ''
       sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
       sed -i heartbeat/ocf-binaries.in -e 's/:=\([a-z]\)/:=\/run\/current-system\/sw\/bin\/\1/'
+      sed -i heartbeat/iscsi -e 's/\/bin\/sh/\/run\/current-system\/sw\/bin\/bash -v/'
 #      substituteInPlace heartbeat/ocf-binaries.in \
 #        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
 #        --replace "/bin/ping" "ping"
