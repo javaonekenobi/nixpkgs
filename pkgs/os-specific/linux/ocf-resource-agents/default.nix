@@ -60,7 +60,10 @@ let
     ];
 
     patchPhase = ''
-      sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
+# fix path in ocf-binaries
+  sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
+# fix for "trailing blank after backspace error in pacemaker.log"
+  sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
