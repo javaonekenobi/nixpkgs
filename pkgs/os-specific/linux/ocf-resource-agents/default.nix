@@ -14,7 +14,7 @@
 , gawk
 , nettools
 , libqb
-#, which
+, which
 , openiscsi
 , python311Packages
 , lvm2
@@ -54,7 +54,7 @@ let
       gawk
       nettools
       libqb
-#      which
+      which
       openiscsi
       python311Packages.logging-journald
       lvm2
