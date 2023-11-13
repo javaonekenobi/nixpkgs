@@ -14,7 +14,7 @@
 , gawk
 , nettools
 , libqb
-#, which
+, which
 #, unixtools
 , openiscsi
 , python311Packages
@@ -68,14 +68,14 @@ let
       nettools
       libqb
       which
-      unixtools.ping
+#      unixtools.ping
       openiscsi
       python311Packages.logging-journald
-      kmod
-      psmisc
-      util-linux
+#      kmod
+#      psmisc
+#      util-linux
       lvm2
-      gnused
+#      gnused
     ];
 
     patchPhase = ''
