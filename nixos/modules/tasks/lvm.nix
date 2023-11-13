@@ -23,7 +23,6 @@ in {
     dmeventd.enable = mkEnableOption (lib.mdDoc "the LVM dmevent daemon");
     boot.thin.enable = mkEnableOption (lib.mdDoc "support for booting from ThinLVs");
     boot.vdo.enable = mkEnableOption (lib.mdDoc "support for booting from VDOLVs");
-    cluster.enable = mkEnableOption (lib.mdDoc "the LVM cluster support");
   };
 
   options.boot.initrd.services.lvm.enable = mkEnableOption (lib.mdDoc "booting from LVM2 in the initrd") // {

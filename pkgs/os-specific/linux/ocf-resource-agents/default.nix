@@ -14,15 +14,15 @@
 , gawk
 , nettools
 , libqb
-, which
-, unixtools
+#, which
+#, unixtools
 , openiscsi
 , python311Packages
-, kmod
-, psmisc
-, util-linux
+#, kmod
+#, psmisc
+#, util-linux
 , lvm2
-, gnused
+#, gnused
 }:
 
 let
@@ -51,14 +51,14 @@ let
       gawk
       libqb
       which
-      unixtools.ping
-      openiscsi
-      python311Packages.logging-journald
-      kmod
-      psmisc
-      util-linux
-      lvm2
-      gnused
+#      unixtools.ping
+#      openiscsi
+#      python311Packages.logging-journald
+#      kmod
+#      psmisc
+#      util-linux
+#      lvm2
+#      gnused
     ];
 
     buildInputs = [
@@ -79,18 +79,9 @@ let
     ];
 
     patchPhase = ''
-      sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
-      sed -i heartbeat/ocf-binaries.in -e 's/:=\([a-z]\)/:=\/run\/current-system\/sw\/bin\/\1/'
-      sed -i heartbeat/ocf-binaries.in -e 's/test -x/echo "IRIO looking for $bin: $(which $bin)" >> \/var\/log\/pacemaker\/pacemaker.log; test -x/'
-#      sed -i heartbeat/iscsi -e 's/^# Initialization:/set -v/'
-#      sed -i heartbeat/LVM-activate -e 's/^# Initialization:/set -v/'
-#      sed -i heartbeat/LVM -e 's/^# Initialization:/set -v/'
-#      substituteInPlace heartbeat/ocf-binaries.in \
-#        --replace "PATH=\"$PATH:/sbin:/bin:/usr/sbin:/usr/bin\"" "PATH=\"/run/current-system/sw/bin\"" \
-#        --replace "/bin/ping" "ping"
-##        --replace "test -x" "echo \"irio bin \$bin\" >> /var/log/pacemaker/pacemaker.log; which \$bin >> /var/log/pacemaker/pacemaker.log 2>&1; echo \"irio path: \$PATH\" >> /var/log/pacemaker/pacemaker.log; test -x" \
-#      substituteInPlace heartbeat/LVM \
-#        --replace "vgchange" "/run/current-system/sw/bin/vgchange"
+#      sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
+#      sed -i heartbeat/ocf-binaries.in -e 's/:=\([a-z]\)/:=\/run\/current-system\/sw\/bin\/\1/'
+#      sed -i heartbeat/ocf-binaries.in -e 's/test -x/echo "IRIO looking for $bin: $(which $bin)" >> \/var\/log\/pacemaker\/pacemaker.log; test -x/'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
@@ -99,7 +90,7 @@ let
     ]);
 
     postInstallPhases = ''
-      sed -i heartbeat/clvm -e 's/deactivate volume groups/& $(which vgchange)/'
+#      sed -i heartbeat/clvm -e 's/deactivate volume groups/& $(which vgchange)/'
     '';
 
     meta = with lib; {
