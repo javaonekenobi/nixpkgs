@@ -62,7 +62,7 @@ let
     patchPhase = ''
 # fix path in ocf-binaries
   sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
-# fix for "trailing blank after backspace error in pacemaker.log"
+# fix for "stray backspace before white space error in pacemaker.log"
   sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
     '';
 
