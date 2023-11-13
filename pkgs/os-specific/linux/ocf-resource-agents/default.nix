@@ -14,15 +14,10 @@
 , gawk
 , nettools
 , libqb
-, which
-#, unixtools
+#, which
 , openiscsi
 , python311Packages
-#, kmod
-#, psmisc
-#, util-linux
 , lvm2
-#, gnused
 }:
 
 let
@@ -50,15 +45,7 @@ let
       python311
       gawk
       libqb
-      which
-#      unixtools.ping
-#      openiscsi
-#      python311Packages.logging-journald
-#      kmod
-#      psmisc
-#      util-linux
-#      lvm2
-#      gnused
+#      which
     ];
 
     buildInputs = [
@@ -67,31 +54,20 @@ let
       gawk
       nettools
       libqb
-      which
-#      unixtools.ping
+#      which
       openiscsi
       python311Packages.logging-journald
-#      kmod
-#      psmisc
-#      util-linux
       lvm2
-#      gnused
     ];
 
     patchPhase = ''
       sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
-#      sed -i heartbeat/ocf-binaries.in -e 's/:=\([a-z]\)/:=\/run\/current-system\/sw\/bin\/\1/'
-#      sed -i heartbeat/ocf-binaries.in -e 's/test -x/echo "IRIO looking for $bin: $(which $bin)" >> \/var\/log\/pacemaker\/pacemaker.log; test -x/'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
       # Needed with GCC 12 but breaks on darwin (with clang) or older gcc
       "-Wno-error=maybe-uninitialized"
     ]);
-
-    postInstallPhases = ''
-#      sed -i heartbeat/clvm -e 's/deactivate volume groups/& $(which vgchange)/'
-    '';
 
     meta = with lib; {
       homepage = "https://github.com/ClusterLabs/resource-agents";
