@@ -45,7 +45,6 @@ let
       python311
       gawk
       libqb
-#      which
     ];
 
     buildInputs = [
