@@ -33,7 +33,8 @@ let
     version = "4.13.0";
 
     src = fetchFromGitHub {
-      owner = "ClusterLabs";
+#      owner = "ClusterLabs";
+      owner = "javaonekenobi";
       repo = pname;
       rev = "v${version}";
       sha256 = "sVOuC5bP9Y0tZIod0h+4/URuqCy2oG/B2EAxaRBvzo8=";
