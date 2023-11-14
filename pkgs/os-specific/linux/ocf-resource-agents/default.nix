@@ -37,7 +37,8 @@ let
 #      owner = "ClusterLabs";
       owner = "javaonekenobi";
       repo = pname;
-      rev = "v${version}";
+#      rev = "v${version}";
+      rev = "${version}";
       sha256 = "sVOuC5bP9Y0tZIod0h+4/URuqCy2oG/B2EAxaRBvzo8=";
     };
 
