@@ -31,7 +31,7 @@ let
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
 #    version = "4.13.0";
-    version = "e42a10ab6bf95c0edde9601cf78b5a2727f8b14a";
+    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
 
     src = fetchFromGitHub {
 #      owner = "ClusterLabs";
@@ -39,7 +39,7 @@ let
       repo = pname;
 #      rev = "v${version}";
       rev = "${version}";
-      sha256 = "sVOuC5bP9Y0tZIod0h+4/URuqCy2oG/B2EAxaRBvzo8=";
+      sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
     };
 
     nativeBuildInputs = [
