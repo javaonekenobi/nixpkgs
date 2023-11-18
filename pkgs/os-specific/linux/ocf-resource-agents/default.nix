@@ -67,6 +67,7 @@ let
   sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin"/'
 # fix for "stray backspace before white space error in pacemaker.log"
   sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
+  sed -i heartbeat/lxd.in -e 's/"Running"/"RUNNING"/'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
