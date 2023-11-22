@@ -68,6 +68,7 @@ let
 # fix for "stray backspace before white space error in pacemaker.log"
   sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
   sed -i heartbeat/lxd.in -e 's/"Running"/"RUNNING"/'
+  sed -i heartbeat/VirtualDomain -e 's/-f qcow2/& -F qcow2/'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
