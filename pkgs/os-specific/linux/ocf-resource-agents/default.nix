@@ -32,7 +32,7 @@ let
     pname = "resource-agents";
 #    version = "4.13.0";
 #    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
-    version = "8fa76c7cf30ee3ffde2a1af152fdb2898ba50fad";
+    version = "e0df41316843be9cbea82928cf3c0b4f7893c51b";
 
 
     src = fetchFromGitHub {
@@ -42,7 +42,7 @@ let
 #      rev = "v${version}";
       rev = "${version}";
 #      sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
-      sha256 = "Uta25YrnVhml/lfMPtedYEfko1bV/1reqGAk8Apz2f8=";
+      sha256 = "";
     };
 
     nativeBuildInputs = [
