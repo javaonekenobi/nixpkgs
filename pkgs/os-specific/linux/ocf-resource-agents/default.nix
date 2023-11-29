@@ -41,7 +41,8 @@ let
       repo = pname;
 #      rev = "v${version}";
       rev = "${version}";
-      sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
+#      sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
+      sha256 = "";
     };
 
     nativeBuildInputs = [
