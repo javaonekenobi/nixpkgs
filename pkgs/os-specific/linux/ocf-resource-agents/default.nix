@@ -42,7 +42,7 @@ let
 #      rev = "v${version}";
       rev = "${version}";
 #      sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
-      sha256 = "";
+      sha256 = "Uta25YrnVhml/lfMPtedYEfko1bV/1reqGAk8Apz2f8=";
     };
 
     nativeBuildInputs = [
