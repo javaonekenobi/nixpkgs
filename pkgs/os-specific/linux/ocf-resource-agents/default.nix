@@ -31,7 +31,9 @@ let
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
 #    version = "4.13.0";
-    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
+#    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
+    version = "8fa76c7cf30ee3ffde2a1af152fdb2898ba50fad";
+
 
     src = fetchFromGitHub {
 #      owner = "ClusterLabs";
