@@ -69,7 +69,7 @@ let
   sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
   sed -i heartbeat/lxd.in -e 's/"Running"/"RUNNING"/'
   sed -i heartbeat/VirtualDomain -e 's/-f qcow2/& -F qcow2/'
-  sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/ocf-resources/'
+  sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/resource-agents/'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
