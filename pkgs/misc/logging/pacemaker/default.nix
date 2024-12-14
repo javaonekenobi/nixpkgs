@@ -30,7 +30,8 @@
 
 stdenv.mkDerivation rec {
   pname = "pacemaker";
-  version = "2.1.6";
+#  version = "2.1.6";
+  version = "2.1.9";
 
   src = fetchFromGitHub {
     owner = "ClusterLabs";
