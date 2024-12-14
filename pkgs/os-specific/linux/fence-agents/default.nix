@@ -18,6 +18,7 @@
 , openiscsi
 , python311Packages
 , lvm2
+, nss
 }:
 
 let
