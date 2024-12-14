@@ -19,6 +19,7 @@
 , python311Packages
 , lvm2
 , nss
+, libxml2
 }:
 
 let
@@ -50,6 +51,7 @@ let
       gawk
       libqb
       nss
+      libxml2.dev
     ];
 
     buildInputs = [
@@ -63,6 +65,7 @@ let
       python311Packages.logging-journald
       lvm2
       nss
+      libxml2.dev
     ];
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
