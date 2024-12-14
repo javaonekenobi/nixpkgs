@@ -48,6 +48,7 @@ let
       python311
       gawk
       libqb
+      nss
     ];
 
     buildInputs = [
@@ -60,6 +61,7 @@ let
       openiscsi
       python311Packages.logging-journald
       lvm2
+      nss
     ];
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
