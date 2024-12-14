@@ -14,6 +14,7 @@
 , libuuid
 , libxml2
 , libxslt
+, nss
 , pam
 , pkg-config
 , python3
@@ -55,6 +56,7 @@ stdenv.mkDerivation rec {
     glib
     gnutls
     libqb
+    nss
     libuuid
     libxml2.dev
     libxslt.dev
