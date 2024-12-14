@@ -39,7 +39,7 @@ let
       repo = pname;
 #      rev = "v${version}";
       rev = "${version}";
-      sha256 = "edfcc6c15371308fce3601674b926fde43004fb4a4d34dfc7bc81be7f85b0b97";
+      sha256 = "sha256-44LzxXQbc3NqqAtZgsp6ClTZIPkP9hHffc1DSkT3bCA=";
     };
 
     nativeBuildInputs = [
