@@ -1,5 +1,5 @@
 # This combines together OCF definitions from other derivations.
-# https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
+# https://github.com/ClusterLabs/fence-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
 { stdenv
 , lib
 , runCommand
@@ -28,7 +28,7 @@ let
     forOCF = true;
   };
 
-  resource-agentsForOCF = stdenv.mkDerivation rec {
+  fence-agentsForOCF = stdenv.mkDerivation rec {
     pname = "fence-agents";
     version = "05fd299e094c6981b4c5b943dee03a29e78ee016";
 
@@ -79,7 +79,7 @@ let
 in
 
 # This combines together fence definitions from other derivations.
-# https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
+# https://github.com/ClusterLabs/fence-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
 runCommand "fence-agents" {} ''
   mkdir -p $out/usr/lib/fence
   ${lndir}/bin/lndir -silent "${fence-agentsForOCF}/lib/fence/" $out/usr/lib/fence
