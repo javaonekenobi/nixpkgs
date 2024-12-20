@@ -6,4 +6,5 @@ in
   fence.overrideAttrs (oldAttrs: rec {
     configureFlags = oldAttrs.configureFlags or [] ++ [ "--sysconfdir=$out/etc" ];
 #   configureFlags = oldAttrs.configureFlags or [] ++ [ "--help" ];
+    culo
   })
