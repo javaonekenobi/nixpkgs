@@ -31,6 +31,7 @@
       nss
       libxml2.dev
       libuuid
+      libossp_uuid
       libxslt
       libvirt
       corosync
@@ -61,6 +62,7 @@
       nss
       libxml2.dev
       libuuid
+      libossp_uuid
       bison
       flex
     ];
