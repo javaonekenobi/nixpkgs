@@ -8,7 +8,8 @@
 
   stdenv.mkDerivation rec {
     pname = "fence-agents";
-    version = "05fd299e094c6981b4c5b943dee03a29e78ee016";
+#    version = "05fd299e094c6981b4c5b943dee03a29e78ee016";
+    version = "HEAD";
 
     src = fetchFromGitHub {
       owner = "javaonekenobi";
