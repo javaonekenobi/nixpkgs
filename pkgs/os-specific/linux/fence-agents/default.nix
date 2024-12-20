@@ -1,5 +1,5 @@
 let
-  pkgs = import <irionixpkgs> {};
+  pkgs = import <nixpkgs> {};
   fence = import ./fence-agents.nix { inherit (pkgs) stdenv lib pkgs fetchFromGitHub; };
 in
   fence.overrideAttrs (oldAttrs: rec {
