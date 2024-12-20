@@ -36,7 +36,7 @@
       libxslt
       libvirt
       corosync
-      pacemaker
+#      pacemaker
       iputils
       bison
       flex
@@ -55,7 +55,7 @@
       libqb
       libvirt
       corosync
-      pacemaker
+#      pacemaker
       iputils
       which
       openiscsi
