@@ -2,11 +2,17 @@
 # https://github.com/ClusterLabs/fence-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
 { stdenv
 , lib
+, pacemaker
 , pkgs
 , fetchFromGitHub
 }:
 
-  stdenv.mkDerivation rec {
+let
+  pacemakerForOCF = pacemaker.override {
+    forOCF = true;
+  };
+
+  resource-fenceForOCF = stdenv.mkDerivation rec {
     pname = "fence-agents";
 #    version = "05fd299e094c6981b4c5b943dee03a29e78ee016";
     version = "HEAD";
@@ -132,5 +138,14 @@
       platforms = platforms.linux;
       maintainers = with maintainers; [ ryantm astro ];
     };
-  }
+  };
 
+in
+
+# This combines together OCF definitions from other derivations.
+# https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
+runCommand "ocf-resource-agents" {} ''
+  mkdir -p $out/usr/lib/ocf
+  ${lndir}/bin/lndir -silent "${resource-agentsForOCF}/lib/ocf/" $out/usr/lib/ocf
+  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+''
