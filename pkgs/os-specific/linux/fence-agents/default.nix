@@ -156,5 +156,4 @@ runCommand "ocf-resource-agents" {} ''
   mkdir -p $out/bin/
   ${lndir}/bin/lndir -silent "${resource-forFence}/bin" $out/bin
   ${lndir}/bin/lndir -silent "${pacemakerForFence}/bin/" $out/bin
-#  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
 ''
