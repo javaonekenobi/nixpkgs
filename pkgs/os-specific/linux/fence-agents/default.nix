@@ -12,6 +12,7 @@
 let
   pacemakerForFence = pacemaker.override {
     forFence = true;
+    forOCF = true;
   };
 
   resource-forFence = stdenv.mkDerivation rec {
