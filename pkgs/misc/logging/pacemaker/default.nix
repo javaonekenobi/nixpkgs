@@ -77,7 +77,7 @@ stdenv.mkDerivation rec {
     "--with-corosync"
     # allows Type=notify in the systemd service
     "--enable-systemd"
-  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-dir}/usr/lib/ocf" ++ lib.optional (!forFence) "--with-fencedir=${fence-dir}/bin";
+  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-dir}" ++ lib.optional (!forFence) "--with-fencedir=${fence-dir}";
 #  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-agents}/usr/lib/ocf" ++ lib.optional (!forFence) "--with-fencedir=${fence-agents}/bin";
 
   installFlags = [ "DESTDIR=${placeholder "out"}" ];
