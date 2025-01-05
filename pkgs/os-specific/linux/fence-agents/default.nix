@@ -4,6 +4,7 @@
 , lib
 , pacemaker
 , runCommand
+, lndir
 , pkgs
 , fetchFromGitHub
 }:
