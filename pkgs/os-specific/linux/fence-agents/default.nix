@@ -10,11 +10,11 @@
 }:
 
 let
-  pacemakerForOCF = pacemaker.override {
-    forOCF = true;
+  pacemakerForFence = pacemaker.override {
+    forFence = true;
   };
 
-  resource-fenceForOCF = stdenv.mkDerivation rec {
+  resource-forFence = stdenv.mkDerivation rec {
     pname = "fence-agents";
 #    version = "05fd299e094c6981b4c5b943dee03a29e78ee016";
     version = "HEAD";
@@ -147,7 +147,7 @@ in
 # This combines together OCF definitions from other derivations.
 # https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
 runCommand "ocf-resource-agents" {} ''
-  mkdir -p $out/usr/lib/ocf
-  ${lndir}/bin/lndir -silent "${resource-fenceForOCF}/lib/fence-virt/" $out/usr/lib/ocf
-  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+  mkdir -p $out/bin/
+  ${lndir}/bin/lndir -silent "${resource-forFence}/bin/" $out/bin
+  ${lndir}/bin/lndir -silent "${pacemakerForFence}/bin/" $out/bin
 ''
