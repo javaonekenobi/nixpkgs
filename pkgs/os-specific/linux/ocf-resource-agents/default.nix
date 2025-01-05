@@ -11,6 +11,7 @@
 , glib
 , drbd
 , pacemaker
+, fence-agents
 , gawk
 , nettools
 , libqb
@@ -27,9 +28,9 @@ let
   pacemakerForOCF = pacemaker.override {
     forOCF = true;
   };
-#  pacemakerForFence = pacemaker.override {
-#    forFence = true;
-#  };
+  fenceForOCF = fence-agents.override {
+    forOCF = true;
+  };
 
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
@@ -101,4 +102,5 @@ runCommand "ocf-resource-agents" {} ''
   ${lndir}/bin/lndir -silent "${resource-agentsForOCF}/lib/ocf/" $out/usr/lib/ocf
   ${lndir}/bin/lndir -silent "${drbdForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
   ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+  ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/bin
 ''
