@@ -15,10 +15,10 @@ let
     forOCF = false;
   };
 
-  pacemakerForOCF = pacemaker.override {
-    forFence = false;
-    forOCF = true;
-  };
+#  pacemakerForOCF = pacemaker.override {
+#    forFence = false;
+#    forOCF = true;
+#  };
 
   resource-forFence = stdenv.mkDerivation rec {
     pname = "fence-agents";
@@ -156,5 +156,5 @@ runCommand "ocf-resource-agents" {} ''
   mkdir -p $out/bin/
   ${lndir}/bin/lndir -silent "${resource-forFence}/bin" $out/bin
   ${lndir}/bin/lndir -silent "${pacemakerForFence}/bin/" $out/bin
-  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/bin
+#  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
 ''
