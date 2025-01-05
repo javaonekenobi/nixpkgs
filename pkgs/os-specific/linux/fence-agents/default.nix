@@ -7,7 +7,7 @@
 , lndir
 , pkgs
 , fetchFromGitHub
-, forOCF ? False
+, forOCF ? false
 }:
 
 stdenv.mkDerivation rec {
