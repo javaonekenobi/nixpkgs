@@ -3,6 +3,7 @@
 { stdenv
 , lib
 , pacemaker
+, runCommand
 , pkgs
 , fetchFromGitHub
 }:
