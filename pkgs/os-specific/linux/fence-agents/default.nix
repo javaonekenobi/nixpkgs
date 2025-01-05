@@ -12,6 +12,11 @@
 let
   pacemakerForFence = pacemaker.override {
     forFence = true;
+    forOCF = false;
+  };
+
+  pacemakerForOCF = pacemaker.override {
+    forFence = false;
     forOCF = true;
   };
 
@@ -149,6 +154,7 @@ in
 # https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
 runCommand "ocf-resource-agents" {} ''
   mkdir -p $out/bin/
-  ${lndir}/bin/lndir -silent "${resource-forFence}/bin/" $out/bin
+  ${lndir}/bin/lndir -silent "${resource-forFence}/bin" $out/bin
   ${lndir}/bin/lndir -silent "${pacemakerForFence}/bin/" $out/bin
+  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/bin
 ''
