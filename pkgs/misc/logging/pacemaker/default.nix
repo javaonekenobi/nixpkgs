@@ -25,8 +25,8 @@
 # again with forOCF = false, where the ocf-resource-agents is provided
 # as the OCF_ROOT.
 , forOCF ? false
+, fence-agents
 , ocf-resource-agents
-#, fence-agents
 } :
 
 stdenv.mkDerivation rec {
@@ -76,7 +76,7 @@ stdenv.mkDerivation rec {
     "--with-corosync"
     # allows Type=notify in the systemd service
     "--enable-systemd"
-  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-agents}/usr/lib/ocf --with-fence-bindir=${fence-agents}/bin";
+  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-agents}/usr/lib/ocf --with-fencedir=${fence-agents} --with-fence-bindir=${fence-agents}/bin";
 
   installFlags = [ "DESTDIR=${placeholder "out"}" ];
 
