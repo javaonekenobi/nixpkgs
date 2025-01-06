@@ -45,8 +45,7 @@ let
 #      rev = "v${version}";
       rev = "${version}";
 #    /  sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
-#      sha256 = "l8doEoqYx9l6sWiyQtEOjf6mBASuvkDvVyV3HSK5Hwc=";
-      sha256 = "l8doEoqYx9l6sWiyQtEOjf6mBASuvkDvVyV3HSK5xxx=";
+      sha256 = "l8doEoqYx9l6sWiyQtEOjf6mBASuvkDvVyV3HSK5Hwc=";
     };
 
     nativeBuildInputs = [
