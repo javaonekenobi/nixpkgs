@@ -26,7 +26,7 @@
 # as the OCF_ROOT.
 , forOCF ? false
 , ocf-resource-agents
-, fence-agents
+#, fence-agents
 } :
 
 stdenv.mkDerivation rec {
