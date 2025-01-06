@@ -77,7 +77,8 @@ stdenv.mkDerivation rec {
     "--with-corosync"
     # allows Type=notify in the systemd service
     "--enable-systemd"
-  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-agents}/usr/lib/ocf --with-fencedir=${fence-agents} --with-fence-bindir=${ocf-resource-agents}/bin";
+  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-agents}/usr/lib/ocf ";
+#  ] ++ lib.optional (!forOCF) "--with-ocfdir=${ocf-resource-agents}/usr/lib/ocf --with-fencedir=${fence-agents} --with-fence-bindir=${ocf-resource-agents}/bin";
 
   installFlags = [ "DESTDIR=${placeholder "out"}" ];
 
@@ -91,6 +92,7 @@ stdenv.mkDerivation rec {
     # pacemaker's install linking requires a weirdly nested hierarchy
     mv $out$out/* $out
     rm -r $out/nix
+    ${lndir}/bin/lndir -silent "${fence-agents}/bin/" $out/sbin
   '';
 
   passthru.tests = {
