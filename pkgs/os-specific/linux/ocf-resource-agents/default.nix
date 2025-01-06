@@ -35,16 +35,15 @@ let
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
 #    version = "4.13.0";
-    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
+#    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
+    version = "6830df7dc32cc2cb2bf21527fd8a0fef29bfc5f9";
 
 
     src = fetchFromGitHub {
-#      owner = "ClusterLabs";
-      owner = "javaonekenobi";
+      owner = "ClusterLabs";
+#      owner = "javaonekenobi";
       repo = pname;
-#      rev = "v${version}";
       rev = "${version}";
-#    /  sha256 = "jpL/EEK9I9nRrc4K9U98NapT4Lt92AxPnliFnsNurQ4=";
       sha256 = "l8doEoqYx9l6sWiyQtEOjf6mBASuvkDvVyV3HSK5Hwc=";
     };
 
