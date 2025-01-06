@@ -101,6 +101,6 @@ stdenv.mkDerivation rec {
     description = "Pacemaker is an open source, high availability resource manager suitable for both small and large clusters.";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [ ryantm astro ];
+    maintainers = with maintainers; [ ryantm astro javaonekenobi ];
   };
 }
