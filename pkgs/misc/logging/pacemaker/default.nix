@@ -91,7 +91,6 @@ stdenv.mkDerivation rec {
     # pacemaker's install linking requires a weirdly nested hierarchy
     mv $out$out/* $out
     rm -r $out/nix
-    ${lndir}/bin/lndir -silent "${fence-agents}/bin" $out/sbin
   '';
 
   passthru.tests = {
