@@ -35,8 +35,7 @@ let
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
 #    version = "4.13.0";
-#    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
-    version = "128a21560568a65aa279e05cb7e62c71bef38715";
+    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
 
 
     src = fetchFromGitHub {
