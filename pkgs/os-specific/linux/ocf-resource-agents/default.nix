@@ -74,6 +74,7 @@ let
   sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
   sed -i heartbeat/lxd.in -e 's/"Running"/"RUNNING"/'
   sed -i heartbeat/VirtualDomain -e 's/-f qcow2/& -F qcow2/'
+  for i in $(find heartbeat -type f -exec grep -l '#!/bin/sh' {} \;); do sed -i $i -e 's/\/bin\/sh/\/usr\/bin\/env bash/'; done
   sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/resource-agents/'
     '';
 
