@@ -67,6 +67,10 @@ let
       lvm2
     ];
 
+    configureFlags = [
+      "--localstatedir=/var"
+    ];
+
     patchPhase = ''
 # fix path in ocf-binaries
   sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin:\/run\/current-system\/sw\/sbin:\/run\/current-system\/sw\/libexec:\/run\/wrappers\/bin"/'
