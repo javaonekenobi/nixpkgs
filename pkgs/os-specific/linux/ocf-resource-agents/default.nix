@@ -32,7 +32,8 @@
 #    forOCF = true;
 #  };
 
-  resource-agentsForOCF = stdenv.mkDerivation rec {
+#  resource-agentsForOCF = stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
     pname = "resource-agents";
 #    version = "4.13.0";
 #    version = "5f89f0942f17733c79de8bc9e9ce8e602ba03e7a";
