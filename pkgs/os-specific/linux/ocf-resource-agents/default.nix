@@ -21,16 +21,16 @@
 , lvm2
 }:
 
-#let
-#  drbdForOCF = drbd.override {
-#    forOCF = true;
-#  };
-#  pacemakerForOCF = pacemaker.override {
-#    forOCF = true;
-#  };
-#  fenceForOCF = fence-agents.override {
-#    forOCF = true;
-#  };
+let
+  drbdForOCF = drbd.override {
+    forOCF = true;
+  };
+  pacemakerForOCF = pacemaker.override {
+    forOCF = true;
+  };
+  fenceForOCF = fence-agents.override {
+    forOCF = true;
+  };
 
 #  resource-agentsForOCF = stdenv.mkDerivation rec {
 stdenv.mkDerivation rec {
@@ -103,19 +103,19 @@ stdenv.mkDerivation rec {
       platforms = platforms.linux;
       maintainers = with maintainers; [ ryantm astro ];
     };
-#  };
-  }
+  };
+#  }
 
-#in
+in
 
-## This combines together OCF definitions from other derivations.
-## https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
-#runCommand "ocf-resource-agents" {} ''
-#  mkdir -p $out/usr/lib/ocf
-#  mkdir -p $out/sbin
-#  ${lndir}/bin/lndir -silent "${resource-agentsForOCF}/lib/ocf/" $out/usr/lib/ocf
-#  ${lndir}/bin/lndir -silent "${drbdForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
-#  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
-#  ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/sbin
-#  ln -s ${pacemakerForOCF}/sbin/fence_watchdog $out/sbin
-#''
+# This combines together OCF definitions from other derivations.
+# https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
+runCommand "ocf-resource-agents" {} ''
+  mkdir -p $out/usr/lib/ocf
+  mkdir -p $out/sbin
+  ${lndir}/bin/lndir -silent "${resource-agentsForOCF}/lib/ocf/" $out/usr/lib/ocf
+  ${lndir}/bin/lndir -silent "${drbdForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+  ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/sbin
+  ln -s ${pacemakerForOCF}/sbin/fence_watchdog $out/sbin
+''
