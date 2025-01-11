@@ -85,6 +85,9 @@ stdenv.mkDerivation rec {
   sed -i heartbeat/VirtualDomain -e 's/-f qcow2/& -F qcow2/'
   for i in $(find heartbeat -type f -exec grep -l '#!/bin/sh' {} \;); do sed -i $i -e 's/\/bin\/sh/\/usr\/bin\/env bash/'; done
 #  sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/resource-agents/'
+    '';
+
+    preinstallPhase = ''
   sed -i Makefile -e 's/\$(INSTALL) -d -m 1755 \$(DESTDIR)$(HA_RSCTMPDIR)//' 
     '';
 
