@@ -73,7 +73,7 @@ let
     '';
 
     configureFlags = [
-      "--localstatedir=/var"
+      "--localstatedir=$out/var"
     ];
 
     patchPhase = ''
