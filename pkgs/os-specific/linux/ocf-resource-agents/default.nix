@@ -21,16 +21,16 @@
 , lvm2
 }:
 
-let
-  drbdForOCF = drbd.override {
-    forOCF = true;
-  };
-  pacemakerForOCF = pacemaker.override {
-    forOCF = true;
-  };
-  fenceForOCF = fence-agents.override {
-    forOCF = true;
-  };
+#let
+#  drbdForOCF = drbd.override {
+#    forOCF = true;
+#  };
+#  pacemakerForOCF = pacemaker.override {
+#    forOCF = true;
+#  };
+#  fenceForOCF = fence-agents.override {
+#    forOCF = true;
+#  };
 
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";
@@ -67,6 +67,10 @@ let
       lvm2
     ];
 
+#    preConfigure = ''
+#      ./autogen.sh --prefix="$out"
+#    '';
+
     configureFlags = [
       "--localstatedir=/var"
     ];
@@ -79,7 +83,7 @@ let
   sed -i heartbeat/lxd.in -e 's/"Running"/"RUNNING"/'
   sed -i heartbeat/VirtualDomain -e 's/-f qcow2/& -F qcow2/'
   for i in $(find heartbeat -type f -exec grep -l '#!/bin/sh' {} \;); do sed -i $i -e 's/\/bin\/sh/\/usr\/bin\/env bash/'; done
-  sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/resource-agents/'
+#  sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/resource-agents/'
     '';
 
     env.NIX_CFLAGS_COMPILE = toString (lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
@@ -94,18 +98,19 @@ let
       platforms = platforms.linux;
       maintainers = with maintainers; [ ryantm astro ];
     };
-  };
+#  };
+  }
 
-in
+#in
 
-# This combines together OCF definitions from other derivations.
-# https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
-runCommand "ocf-resource-agents" {} ''
-  mkdir -p $out/usr/lib/ocf
-  mkdir -p $out/sbin
-  ${lndir}/bin/lndir -silent "${resource-agentsForOCF}/lib/ocf/" $out/usr/lib/ocf
-  ${lndir}/bin/lndir -silent "${drbdForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
-  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
-  ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/sbin
-  ln -s ${pacemakerForOCF}/sbin/fence_watchdog $out/sbin
-''
+## This combines together OCF definitions from other derivations.
+## https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
+#runCommand "ocf-resource-agents" {} ''
+#  mkdir -p $out/usr/lib/ocf
+#  mkdir -p $out/sbin
+#  ${lndir}/bin/lndir -silent "${resource-agentsForOCF}/lib/ocf/" $out/usr/lib/ocf
+#  ${lndir}/bin/lndir -silent "${drbdForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+#  ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
+#  ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/sbin
+#  ln -s ${pacemakerForOCF}/sbin/fence_watchdog $out/sbin
+#''
