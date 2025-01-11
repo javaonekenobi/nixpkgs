@@ -102,7 +102,7 @@ let
   };
 #  }
 
-#in
+in
 
 # This combines together OCF definitions from other derivations.
 # https://github.com/ClusterLabs/resource-agents/blob/master/doc/dev-guides/ra-dev-guide.asc
