@@ -73,7 +73,7 @@ stdenv.mkDerivation rec {
     '';
 
     configureFlags = [
-      "--localstatedir=$out/var"
+      "--localstatedir=/var"
     ];
 
     patchPhase = ''
