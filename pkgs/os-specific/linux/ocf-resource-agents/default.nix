@@ -87,7 +87,7 @@ stdenv.mkDerivation rec {
 #  sed -i configure.ac -e 's/^HA_RSCTMPDIR=.*/HA_RSCTMPDIR=\$out\/var\/run\/resource-agents/'
     '';
 
-    preinstallPhase = ''
+    preInstall = ''
   sed -i Makefile -e 's/\$(INSTALL) -d -m 1755 \$(DESTDIR)$(HA_RSCTMPDIR)//' 
     '';
 
