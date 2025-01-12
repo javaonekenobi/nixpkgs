@@ -110,6 +110,12 @@ stdenv.mkDerivation rec {
                 'add_component_to_path("${placeholder "out"}/lib/drbd");'
   '';
 
+  postInstall = ''
+      substituteInPlace $out/usr/lib/ocf/resource.d/linbit/drbd \
+      --replace '"\$(HA_SBIN_DIR)");' \
+                '"/run/current-system/sw/bin");'
+  '';
+
   preConfigure = ''
     export PATH=${systemd}/sbin:$PATH
   '';
