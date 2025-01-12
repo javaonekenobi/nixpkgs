@@ -110,7 +110,7 @@ stdenv.mkDerivation rec {
                 'add_component_to_path("${placeholder "out"}/lib/drbd");'
 #    substituteInPlace scripts/drbd.ocf \
 #      --replace '\$\{HA_SBIN_DIR\}' '/run/current-system/sw/bin'
-     sed -i scripts/drbd.ocf -e 's/\$.HA_SBIN_DIR./\/run\/current-system\/sw\/bin/echo '
+     sed -i scripts/drbd.ocf -e 's/\$.HA_SBIN_DIR./\/run\/current-system\/sw\/bin\/echo '
   '';
 
   preConfigure = ''
