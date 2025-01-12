@@ -111,7 +111,7 @@ stdenv.mkDerivation rec {
 #    substituteInPlace scripts/drbd.ocf \
 #      --replace '\$\{HA_SBIN_DIR\}' '/run/current-system/sw/bin'
 #     sed -i scripts/drbd.ocf -e 's/\$.HA_SBIN_DIR./\/run\/current-system\/sw\/bin/'
-     sed -i scripts/drbd.ocf -e 's/do_cmd \$.HA_SBIN_DIR./ocf_log notice \/run\/current-system\/sw\/bin\/'
+     sed -i scripts/drbd.ocf -e 's/do_cmd \$.HA_SBIN_DIR./ocf_log notice \/run\/current-system\/sw\/bin/'
   '';
 
   preConfigure = ''
