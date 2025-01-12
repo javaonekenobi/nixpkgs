@@ -109,7 +109,7 @@ stdenv.mkDerivation rec {
       --replace 'add_component_to_path("/lib/drbd");' \
                 'add_component_to_path("${placeholder "out"}/lib/drbd");'
     substituteInPlace scripts/drbd.ocf \
-      --replace '''$''{HA_SBIN_DIR''}' \
+      --replace '''$''{HA_SBIN_DIR}' \
                 '"/run/current-system/sw/bin");'
   '';
 
