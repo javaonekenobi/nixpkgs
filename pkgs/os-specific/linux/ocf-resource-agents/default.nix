@@ -117,6 +117,11 @@ runCommand "ocf-resource-agents" {} ''
   ${lndir}/bin/lndir -silent "${drbdForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
   ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
   ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/sbin
-  sed -i $out/usr/lib/ocf/drbd -e "s/\$(HA_SBIN_DIR)/$out\/sbin/"
+
+  substituteInPlace $out/usr/lib/ocf/drbd \
+      --replace '"\$(HA_SBIN_DIR)");' \
+                '"${placeholder "out"}/sbin");'
+
+#  sed -i $out/usr/lib/ocf/drbd -e "s/\$(HA_SBIN_DIR)/$out\/sbin/"
   ln -s ${pacemakerForOCF}/sbin/fence_watchdog $out/sbin
 ''
