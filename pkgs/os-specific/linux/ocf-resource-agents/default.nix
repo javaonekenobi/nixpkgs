@@ -118,7 +118,7 @@ runCommand "ocf-resource-agents" {} ''
   ${lndir}/bin/lndir -silent "${pacemakerForOCF}/usr/lib/ocf/" $out/usr/lib/ocf
   ${lndir}/bin/lndir -silent "${fenceForOCF}/bin" $out/sbin
 
-  substituteInPlace ${drbdForOCF)/usr/lib/ocf/drbd \
+  substituteInPlace ${drbdForOCF}/usr/lib/ocf/drbd \
       --replace '"\$(HA_SBIN_DIR)");' \
                 '"${placeholder "out"}/sbin");'
 
