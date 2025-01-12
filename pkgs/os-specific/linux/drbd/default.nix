@@ -108,7 +108,7 @@ stdenv.mkDerivation rec {
     substituteInPlace user/v9/drbdtool_common.c \
       --replace 'add_component_to_path("/lib/drbd");' \
                 'add_component_to_path("${placeholder "out"}/lib/drbd");'
-    substituteInPlace $out/usr/lib/ocf/resource.d/linbit/drbd \
+    substituteInPlace script/drbd.script \
       --replace '"\$(HA_SBIN_DIR)");' \
                 '"/run/current-system/sw/bin");'
   '';
