@@ -112,6 +112,10 @@ stdenv.mkDerivation rec {
 #      --replace '\$\{HA_SBIN_DIR\}' '/run/current-system/sw/bin'
 #     sed -i scripts/drbd.ocf -e 's/\$.HA_SBIN_DIR./\/run\/current-system\/sw\/bin/'
      sed -i scripts/drbd.ocf -e 's/do_cmd \$.HA_SBIN_DIR./ocf_log notice \/run\/current-system\/sw\/bin/'
+     sed -i scripts/drbd.ocf -e 's#\$(crm_master.*)#\$(crm_attribute -q -l reboot -G --promotion=\$DRBD_RESOURCE 2>/dev/null)#'
+     sed -i scripts/drbd.ocf -e 's#/crm_master -Q -l reboot -v \$1#/crm_attribute -q -l reboot --promotion=\$DRBD_RESOURCE -v =\$1#'
+     sed -i scripts/drbd.ocf -e 's#/crm_master -l reboot -D#/crm_attribute -l reboot --delete --promotion=\$DRBD_RESOURCE#'
+     
   '';
 
   preConfigure = ''
