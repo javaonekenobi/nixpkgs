@@ -115,6 +115,7 @@ stdenv.mkDerivation rec {
      sed -i scripts/drbd.ocf -e 's#\$(crm_master.*)#\$(crm_attribute -q -l reboot -G --promotion=\$DRBD_RESOURCE 2>/dev/null)#'
      sed -i scripts/drbd.ocf -e 's#/crm_master -Q -l reboot -v \$1#/crm_attribute -q -l reboot --promotion=\$DRBD_RESOURCE -v =\$1#'
      sed -i scripts/drbd.ocf -e 's#/crm_master -l reboot -D#/crm_attribute -l reboot --delete --promotion=\$DRBD_RESOURCE#'
+     sed -i scripts/drbd.ocf -e 's#--skip-net##'
      
   '';
 
