@@ -80,7 +80,7 @@ let
 # fix path in ocf-binaries
   sed -i heartbeat/ocf-binaries.in -e 's/PATH=".*"/PATH="\/run\/current-system\/sw\/bin:\/run\/current-system\/sw\/sbin:\/run\/current-system\/sw\/libexec:\/run\/wrappers\/bin"/'
 # fix for "stray backspace before white space error in pacemaker.log"
-  sed -i heartbeat/IPsrcaddr -e 's/\\ / /'
+  sed -i heartbeat/IPsrcaddr -e 's/\\ / /g'
   sed -i heartbeat/lxd.in -e 's/"Running"/"RUNNING"/'
   sed -i heartbeat/VirtualDomain -e 's/-f qcow2/& -F qcow2/'
   for i in $(find heartbeat -type f -exec grep -l '#!/bin/sh' {} \;); do sed -i $i -e 's/\/bin\/sh/\/usr\/bin\/env bash/'; done
